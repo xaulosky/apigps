@@ -5,6 +5,7 @@ GET http://localhost/apigps/api/cliente.php
 GET http://localhost/apigps/api/cliente.php?id=1
 
 ###
+
 POST http://localhost/apigps/api/cliente.php
 content-type: application/json
 

@@ -1,0 +1,1 @@
+GET http://localhost/APIGPS/apigps/api/insumo.php?cInsumo=1

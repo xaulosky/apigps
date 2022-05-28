@@ -7,19 +7,22 @@
 
  $insumo = new Insumo();
 
-$body = json_decode(file_get_contents("php://input"), true);
+ $body = json_decode(file_get_contents("php://input"), true);
 
-/* method */
-$method = $_SERVER['REQUEST_METHOD'];
+ /* method */
+ $method = $_SERVER['REQUEST_METHOD'];
 
-switch ($variable) {
-    case 'GET':
-        if (isset($_GET['nombreInsumo'])){
-            echo json_encode($insumo->get_insumo_por_nombre($_GET['nombreInsumo']));
-        } else if($GET['cInsumo']){
+ switch ($method) {
+     case 'GET':
+         if (isset($_GET['nombreInsumo'])){
+             echo json_encode($insumo->get_insumo_por_nombre($_GET['nombreInsumo']));
+         } else if(isset($_GET['cInsumo'])){
             echo json_encode($insumo->get_insumo_por_cInsumo($_GET['cInsumo']));
-        }
-        else{
+        } else{
             echo json_encode($insumo->get_insumo());
         }
+         break;
+    case 'POST':
+        # code...
+        break;
 }
