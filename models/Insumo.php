@@ -1,5 +1,5 @@
 <?php 
-
+/* cTALLER ARREGLAR PARA OTROS TALLERES. */
 class Insumo extends Conectar{
 
     public function get_insumo(){
@@ -27,6 +27,28 @@ class Insumo extends Conectar{
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    /* Funcion agregar insumo recive nombreInsumo, cantidad, costo, cTaller=1*/
+    public function agregar_insumo($nombreInsumo, $cantidad, $costo){
+        $conectar = parent::conexion();
+        $sql = "INSERT INTO insumo VALUES(null, ?, ?, ?, 1)";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $nombreInsumo);
+        $sql->bindValue(2, $cantidad);
+        $sql->bindValue(3, $costo);
+        $sql->execute();
+        
+    }
 
-
+    /* Actualizar insumo recive nombreInsumo, cantidad, costo, cTaller=1 */
+    public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo){
+        $conectar = parent::conexion();
+        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ? AND cTaller = 1";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $nombreInsumo);
+        $sql->bindValue(2, $cantidad);
+        $sql->bindValue(3, $costo);
+        $sql->bindValue(4, $cInsumo);
+        $sql->execute();
+    }
 }
