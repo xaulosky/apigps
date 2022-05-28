@@ -21,6 +21,38 @@ class Cliente extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function get_cliente_por_nombre($nombre)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM cliente WHERE nombreC = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $nombre);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /* get cliente for rutC */
+    public function get_cliente_por_rut($rutC)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM cliente WHERE rutC = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $rutC);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /* get cliente for apellidoC */
+    public function get_cliente_por_apellido($apellidoC)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM cliente WHERE apellidoC = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $apellidoC);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /* function add cliente resive  rutC, emailC, nombreC, apellidoC, direccionC, cComuna */
     public function add_cliente($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $cComuna)
     {
