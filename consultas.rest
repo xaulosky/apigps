@@ -11,10 +11,10 @@ POST http://localhost/apigps/api/cliente.php
 content-type: application/json
 
 {
-    "rutC": "21434319-3",
-    "emailC": "Etiam.ligula.tortor@metuseu.net",
-    "nombreC": "Ainsley",
-    "apellidoC": "Morton",
+    "rutC": "20133132-2",
+    "emailC": "pantruka@gaymail.com",
+    "nombreC": "Pantruka",
+    "apellidoC": "Pantrukey",
     "direccionC": "null",
     "cComuna": 1107
 }
