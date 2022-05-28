@@ -1,5 +1,3 @@
-
-
 GET http://localhost/apigps/api/cliente.php
 
 ###
