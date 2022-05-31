@@ -20,5 +20,5 @@ PUT http://localhost/APIGPS/apigps/api/insumo.php
     "nombreInsumo": "Multitester digital UT-61A",
     "cantidad": "15",
     "costo": 39900,
-    "cInsumo":2
+    "cInsumo":1
 }
