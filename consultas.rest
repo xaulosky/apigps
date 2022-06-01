@@ -7,6 +7,7 @@ GET http://localhost/apigps/api/cliente.php?id=1
 POST http://localhost/apigps/api/cliente.php
 content-type: application/json
 
+
 {
     "rutC": "20133132-2",
     "emailC": "pantruka@gaymail.com",
@@ -16,3 +17,9 @@ content-type: application/json
     "cComuna": 1107
 }
 
+### 
+GET http://localhost/apigps/apigps/api/trabajo.php
+
+###
+
+GET http://localhost/apigps/apigps/api/trabajo.php?cTrabajo=2
