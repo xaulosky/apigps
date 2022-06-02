@@ -1,0 +1,6 @@
+POST http://localhost/apigps/api/login.php
+
+{
+    "email": "b@b.cl",
+    "clave": "1234"
+}

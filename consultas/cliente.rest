@@ -1,0 +1,14 @@
+GET http://localhost:8080/apigps/api/cliente.php
+
+###
+POST http://localhost:8080/apigps/api/cliente.php
+
+ {
+    "rutC": "11111111111111",
+    "emailC": "BBBBBBB@BBB.CL",
+    "nombreC": "PABLO",
+    "apellidoC": "ANTUA",
+    "direccionC": "mi casa XXX",
+    "estadoC": 0,
+    "cComuna": 1107
+  }

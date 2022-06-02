@@ -5,7 +5,7 @@ class Usuario extends Conectar
     public function get_usuarios()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM usuario";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -19,16 +19,17 @@ class Usuario extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function add_usuario($nombre, $email)
+    /* crear usuario recive email clave*/
+    public function crear_usuario($email, $clave)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO usuarios VALUES(null, ?, ?)";
+        $sql = "INSERT INTO usuario (email, clave) VALUES (?, MD5(?))";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $nombre);
-        $sql->bindValue(2, $email);
+        $sql->bindValue(1, $email);
+        $sql->bindValue(2, $clave);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function update_usuario($id, $nombre, $email)
     {
         $conectar = parent::conexion();
@@ -40,12 +41,24 @@ class Usuario extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function delete_usuario($id)
+    /* cambiar clave */
+    public function cambiar_clave($cUsuario, $clave)
     {
         $conectar = parent::conexion();
-        $sql = "DELETE FROM usuarios WHERE id = ?";
+        $sql = "UPDATE usuarios SET clave = MD5(?) WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $id);
+        $sql->bindValue(1, $clave);
+        $sql->bindValue(2, $cUsuario);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function delete_usuario($cUsuario)
+    {
+        $conectar = parent::conexion();
+        $sql = "DELETE FROM usuarios WHERE cUsuario = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cUsuario);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
