@@ -1,0 +1,24 @@
+###CONSULTAR POR CODIGO INSUMO
+GET http://localhost/APIGPS/apigps/api/insumo.php
+
+###AGREGAR INSUMO
+
+POST http://localhost/APIGPS/apigps/api/insumo.php?cInsumo
+
+{
+    "nombreInsumo": "Multitester digital UT-61A",
+    "cantidad": "3",
+    "costo": 33,
+    "cTaller":1
+}
+
+###
+
+PUT http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "nombreInsumo": "Multitester digital UT-61A",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1
+}
