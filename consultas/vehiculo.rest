@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 GET http://localhost/apigps/api/vehiculo.php
 
 ###
@@ -19,3 +20,6 @@ POST http://localhost/apigps/api/vehiculo.php
     "cAseguradora": null,
     "cTipoCarroceria": null
 }
+=======
+GET http://localhost/APIgps/apigps/api/vehiculo.php
+>>>>>>> 4a6bd41cc9695db0261112aa433b87054da8110b
