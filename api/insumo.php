@@ -1,7 +1,8 @@
 <?php
 
  header('Content-Type: application/json');
- 
+
+ require_once("../config/configHeader.php");//Sirve para permitir que se realicen las consultas a la BBDD
  require_once '../config/conexion.php';
  require_once '../models/Insumo.php';
 
@@ -24,7 +25,6 @@
         }
          break;
 
-
     case 'POST':
         if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) ){
             $insumo->agregar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'] );
@@ -34,11 +34,22 @@
         }
         break;
 
-
     case 'PUT':
         if(isset($body['cInsumo']) && isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo'])){
             $insumo->actualizar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo']);
             echo json_encode(array('msg' => 'Insumo actualizado'));
+        }else{
+            echo json_encode(array('msg' => 'Faltan datos'));
+        }
+        break;
+
+    case 'DELETE':
+        if(isset($body['cInsumo'])){
+            $insumo->eliminar_insumo($body['cInsumo']);
+            echo json_encode(array('msg' => 'Insumo eliminado'));
+        }else if(isset($body['nombreInsumo'])){
+            $insumo->eliminar_insumo_por_nombre($body['nombreInsumo']);
+            echo json_encode(array('msg' => 'Insumo eliminado'));
         }else{
             echo json_encode(array('msg' => 'Faltan datos'));
         }
