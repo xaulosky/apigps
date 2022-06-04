@@ -22,17 +22,18 @@ class Cliente extends Conectar
     }
 
     /* function add cliente resive  rutC, emailC, nombreC, apellidoC, direccionC, cComuna */
-    public function add_cliente($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $cComuna)
+    public function add_cliente($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $estadoC, $cComuna)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO cliente VALUES(null, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO cliente VALUES(null, ?, ?, ?, ?, ?, ?, ?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $rutC);
         $sql->bindValue(2, $emailC);
         $sql->bindValue(3, $nombreC);
         $sql->bindValue(4, $apellidoC);
         $sql->bindValue(5, $direccionC);
-        $sql->bindValue(6, $cComuna);
+        $sql->bindValue(6, $estadoC);
+        $sql->bindValue(7, $cComuna);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -65,6 +66,4 @@ class Cliente extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-
-   
 }

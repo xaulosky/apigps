@@ -1,18 +1,18 @@
-GET http://localhost/apigps/api/cliente.php
+GET http://localhost:8080/apigps/api/cliente.php
 
 ###
-GET http://localhost/apigps/api/cliente.php?id=1
+GET http://localhost:8080/apigps/api/cliente.php?id=1
 
 ###
-POST http://localhost/apigps/api/cliente.php
-content-type: application/json
+POST http://localhost:8080/apigps/api/cliente.php
 
-{
-    "rutC": "20133132-2",
-    "emailC": "pantruka@gaymail.com",
-    "nombreC": "Pantruka",
-    "apellidoC": "Pantrukey",
-    "direccionC": "null",
-    "cComuna": 1107
-}
+
+
+###
+GET http://localhost:8080/apigps/api/comuna.php
+
+
+
+
+
 
