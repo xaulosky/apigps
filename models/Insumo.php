@@ -43,12 +43,33 @@ class Insumo extends Conectar{
     /* Actualizar insumo recive nombreInsumo, cantidad, costo, cTaller=1 */
     public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo){
         $conectar = parent::conexion();
-        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ? AND cTaller = 1";
+        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ? AND cTaller = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreInsumo);
         $sql->bindValue(2, $cantidad);
         $sql->bindValue(3, $costo);
         $sql->bindValue(4, $cInsumo);
+        $sql->bindValue(5, $cTaller);
+        $sql->execute();
+    }
+
+    /* Eliminar insumo recive cInsumo */
+    public function eliminar_insumo_por_cInsumo($cInsumo){
+        $conectar = parent::conexion();
+        $sql = "DELETE FROM insumo WHERE cInsumo = ? AND cTaller = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cInsumo);
+        $sql->bindValue(2, $cTaller);
+        $sql->execute();
+    }
+
+    /* Eliminar insumo recive nombreInsumo */
+    public function eliminar_insumo_por_nombreInsumo($nombreInsumo){
+        $conectar = parent::conexion();
+        $sql = "DELETE FROM insumo WHERE nombreInsumo = ? AND cTaller = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $nombreInsumo);
+        $sql->bindValue(2, $cTaller);
         $sql->execute();
     }
 }
