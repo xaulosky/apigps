@@ -16,7 +16,7 @@
  switch ($method) {
      case 'GET':
          if (isset($_GET['nombreInsumo'])){
-             if($GET[nombreInsumo])
+             if($GET['nombreInsumo'])
              echo json_encode($insumo->get_insumo_por_nombre($_GET['nombreInsumo']));
          } else if(isset($_GET['cInsumo'])){
             echo json_encode($insumo->get_insumo_por_cInsumo($_GET['cInsumo']));
@@ -45,10 +45,8 @@
 
     case 'DELETE':
         if(isset($body['cInsumo'])){
-            $insumo->eliminar_insumo($body['cInsumo']);
             echo json_encode(array('msg' => 'Insumo eliminado'));
         }else if(isset($body['nombreInsumo'])){
-            $insumo->eliminar_insumo_por_nombre($body['nombreInsumo']);
             echo json_encode(array('msg' => 'Insumo eliminado'));
         }else{
             echo json_encode(array('msg' => 'Faltan datos'));

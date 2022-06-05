@@ -3,7 +3,7 @@
 
 /* header json */
 header('Content-Type: application/json');
-
+require_once("../config/configHeader.php");
 require_once '../config/conexion.php';
 require_once '../models/Usuario.php';
 $usuario = new Usuario();
