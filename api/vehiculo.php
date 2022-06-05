@@ -24,7 +24,7 @@ switch ($method) {
     case 'POST':
         /* validar que existan */
         if (isset($body['patenteV'])) {
-            $vehiculo->add_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria']);
+            $vehiculo->añadir_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria']);
             echo json_encode(array('msg' => 'Agregado correctamente'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));
