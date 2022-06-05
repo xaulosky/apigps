@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+GET http://localhost:8080/apigps/api/cliente.php
+
+###
+POST http://localhost:8080/apigps/api/cliente.php
+
+ {
+    "rutC": "11111111111111",
+    "emailC": "BBBBBBB@BBB.CL",
+    "nombreC": "PABLO",
+    "apellidoC": "ANTUA",
+    "direccionC": "mi casa XXX",
+    "estadoC": 0,
+    "cComuna": 1107
+  }
+=======
 GET http://localhost/apigps/api/cliente.php
 
 ###
@@ -17,3 +33,4 @@ content-type: application/json
     "cComuna": 1107
 }
 
+>>>>>>> 4a6bd41cc9695db0261112aa433b87054da8110b

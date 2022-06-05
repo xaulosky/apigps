@@ -16,7 +16,7 @@
  switch ($method) {
      case 'GET':
          if (isset($_GET['nombreInsumo'])){
-             if($GET[nombreInsumo])
+             if($GET['nombreInsumo'])
              echo json_encode($insumo->get_insumo_por_nombre($_GET['nombreInsumo']));
          } else if(isset($_GET['cInsumo'])){
             echo json_encode($insumo->get_insumo_por_cInsumo($_GET['cInsumo']));
