@@ -30,7 +30,7 @@
             $insumo->agregar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'] );
             echo json_encode(array('msg' => 'Insumo agregado'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos'));
+            echo json_encode(array('msg' => 'Faltan datos para agregar el insumo'));
         }
         break;
 
@@ -39,17 +39,16 @@
             $insumo->actualizar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo']);
             echo json_encode(array('msg' => 'Insumo actualizado'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos'));
+            echo json_encode(array('msg' => 'Faltan datos actulizar insumo'));
         }
         break;
 
     case 'DELETE':
-        if(isset($body['cInsumo'])){
+        if (isset($_GET['id'])) {
+            $insumo->delete_insumo($_GET['id']);
             echo json_encode(array('msg' => 'Insumo eliminado'));
-        }else if(isset($body['nombreInsumo'])){
-            echo json_encode(array('msg' => 'Insumo eliminado'));
-        }else{
-            echo json_encode(array('msg' => 'Faltan datos'));
+        } else {
+            echo json_encode(array('msg' => 'Error, no se pudo eliminar insumo'));
         }
-        break;
+
 }

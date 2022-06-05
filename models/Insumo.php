@@ -21,6 +21,7 @@ class Insumo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     /* funcion obtener insumo por cInsumo */
     public function get_insumo_por_cInsumo($cInsumo)
     {
@@ -48,7 +49,7 @@ class Insumo extends Conectar
     public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ? AND cTaller = ?";
+        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = 1 AND cTaller = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreInsumo);
         $sql->bindValue(2, $cantidad);
@@ -58,22 +59,13 @@ class Insumo extends Conectar
     }
 
     /* Eliminar insumo recive cInsumo */
-    public function eliminar_insumo_por_cInsumo($cInsumo)
+    public function delete_insumo($id)
     {
         $conectar = parent::conexion();
-        $sql = "DELETE FROM insumo WHERE cInsumo = ? AND cTaller = ?";
+        $sql = "DELETE FROM insumo WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cInsumo);
+        $sql->bindValue(1, $id);
         $sql->execute();
-    }
-
-    /* Eliminar insumo recive nombreInsumo */
-    public function eliminar_insumo_por_nombreInsumo($nombreInsumo)
-    {
-        $conectar = parent::conexion();
-        $sql = "DELETE FROM insumo WHERE nombreInsumo = ? AND cTaller = ?";
-        $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $nombreInsumo);
-        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }
