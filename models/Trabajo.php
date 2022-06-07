@@ -22,10 +22,10 @@ class Trabajo extends Conectar
     }
 
    
-    public function add_trabajo($nombreTrabajo, $descripcionTrabajo, $fechaEstimadaT, $fechaRealT, $costoT, $horasT, $cOrdenTrabajo, $cTipoT, $cEmpleado, $cTipoE)
+    public function crear_trabajo($nombreTrabajo, $descripcionTrabajo, $fechaEstimadaT, $fechaRealT, $costoT, $horasT, $cOrdenTrabajo, $cTipoT, $cEmpleado, $cTipoE)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO trabajo VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO trabajo VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreTrabajo);
         $sql->bindValue(2, $descripcionTrabajo);
