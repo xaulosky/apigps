@@ -1,6 +1,7 @@
 <?php
 
 /* configuracion de los CORS */
+header('Content-Type: application/json');
 require_once("../config/configHeader.php");
 require_once '../config/conexion.php';
 require_once '../models/Vehiculo.php';
