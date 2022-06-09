@@ -23,7 +23,7 @@ class Usuario extends Conectar
     public function add_usuario($email,$clave,$cRolU,$cTaller,$nombreU)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO usuario VALUES(null, ?, ? ,? ,? ,?)";
+        $sql = "INSERT INTO usuario VALUES(null, ?, ? ,? ,? ,?) ";
         $sql = $conectar->prepare($sql); 
         $sql->bindValue(1, $email);
         $sql->bindValue(2, $clave);
@@ -33,14 +33,16 @@ class Usuario extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function update_usuario($id, $nombre, $email)
+    public function update_usuario($id, $nombre,$email, $clave, $cRolU)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?";
+        $sql = "UPDATE usuario SET nombreU = ?, email = ?, clave = ?, cRolU = ? WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombre);
         $sql->bindValue(2, $email);
-        $sql->bindValue(3, $id);
+        $sql->bindValue(3, $clave);
+        $sql->bindValue(4, $cRolU);
+        $sql->bindValue(5, $id);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
