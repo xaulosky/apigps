@@ -6,7 +6,7 @@ class Comuna extends Conectar
     public function get_comunas()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT cComuna FROM comuna";
+        $sql = "SELECT cComuna, nombreC FROM comuna";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);

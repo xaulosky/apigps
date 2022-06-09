@@ -5,7 +5,7 @@ class Cliente extends Conectar
     public function get_clientes()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM cliente";
+        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
