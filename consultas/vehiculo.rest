@@ -24,14 +24,14 @@ DELETE http://localhost/APIGPS/apigps/api/vehiculo.php?cVehiculo=2
 #####
 PUT http://localhost/APIGPS/apigps/api/vehiculo.php
 
-{
-    "cVehiculo": 1,
-    "patenteV": "XXXXXX",
-    "modeloV": "CAggsssssg",
-    "colorV": "AfshsdZuuuZZ",
-    "estadoV": "III",
-    "estadoRevisionTecnicaV": "AAA",
-    "montoAseguradora": 123123
+{       
+        "cVehiculo": "1",
+        "patenteV": "XXXXXX",
+        "modeloV": "4x4",
+        "colorV": "azul",
+        "estadoV": "FFFF",
+        "estadoRevisionTecnicaV": "AAA",
+        "montoAseguradora": "123123"
 }
 
 

@@ -148,18 +148,18 @@ class Vehiculo extends Conectar
     }
 
     //funcion para actualizar un vehiculo de la BDD 
-    public function actualizar_vehiculo($cVehiculo, $patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAseguradora)
+    public function actualizar_vehiculo($cVehiculo, $patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora)
     {
         $conectar = parent::conexion();
         $sql = "UPDATE vehiculo SET patenteV = ?, modeloV = ?, colorV = ?, estadoV = ?, estadoRevisionTecnicaV = ?, montoAseguradora = ? WHERE cVehiculo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cVehiculo);
-        $sql->bindValue(2, $patenteV);
-        $sql->bindValue(3, $modeloV);
-        $sql->bindValue(4, $colorV);
-        $sql->bindValue(5, $estadoV);
-        $sql->bindValue(6, $estadoRevisionTecnicaV);
-        $sql->bindValue(7, $montoAseguradora);
+        $sql->bindValue(1, $patenteV);
+        $sql->bindValue(2, $modeloV);
+        $sql->bindValue(3, $colorV);
+        $sql->bindValue(4, $estadoV);
+        $sql->bindValue(5, $estadoRevisionTecnicaV);
+        $sql->bindValue(6, $montoAsegurdora);
+        $sql->bindValue(7, $cVehiculo);
         $sql->execute();
     }
 }

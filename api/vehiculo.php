@@ -35,7 +35,8 @@ switch ($method) {
     case 'PUT':
         /* validar que existan */
         if (isset($body['cVehiculo'])){
-            echo json_encode($vehiculo->actualizar_vehiculo($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora']));
+            $vehiculo->actualizar_vehiculo($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora']);
+            echo json_encode(array('msg' => 'Actualizado correctamente'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos o no existe el vehiculo'));
         }
