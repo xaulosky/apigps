@@ -30,11 +30,11 @@ switch($method){
         }
         break;
     case 'PUT':
-        if(isset($body['cUsuario'])&&isset($body['email'])&&isset($body['clave'])&&isset($body['cRolU'])&&isset($body['nombreU'])){
-            $usuario->update_usuario($body['cUsuario'],$body['email'],$body['clave'],$body['cRolU'],$body['nombreU']);
+        if(isset($body['nombreU'])&&isset($body['email'])&&isset($body['clave'])&&isset($body['cRolU'])&&isset($body['cUsuario'])){
+            $usuario->update_usuario($body['nombreU'],$body['email'],$body['clave'],$body['cRolU'],$body['cUsuario'],);
             echo json_encode(array('msg' => 'Usuario actualizado'));
         } else{
-            echo json_encode(array('msg' => 'Datos insufucientes'));
+            echo json_encode(array('msg' => 'Datos insuficientes'));
         }
         break;
     case 'DELETE':
