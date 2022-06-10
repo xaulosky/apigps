@@ -33,8 +33,21 @@ switch ($method) {
         break;
 
     case 'PUT':
-
+        /* validar que existan */
+        if (isset($body['cVehiculo'])){
+            echo json_encode($vehiculo->actualizar_vehiculo($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora']));
+        } else {
+            echo json_encode(array('msg' => 'Faltan datos o no existe el vehiculo'));
+        }
         break;
+
+
     case 'DELETE':
+        if (isset($_GET['cVehiculo'])) {
+            $vehiculo->eliminar_vehiculo($_GET['cVehiculo']);
+            echo json_encode(array('msg' => 'Vehiculo eliminado'));
+        } else {
+            echo json_encode(array('msg' => 'Error, no se pudo eliminar el vehiculo'));
+        }
         break;
 }

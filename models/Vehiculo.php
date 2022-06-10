@@ -101,7 +101,7 @@ class Vehiculo extends Conectar
     public function get_vehiculo_por_TipoCarroceria($tipoCarroceria)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE tipoCarroceria = ?";
+        $sql = "SELECT * FROM tipoCarroceria WHERE tipoCarroceria = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $tipoCarroceria);
         $sql->execute();
@@ -120,20 +120,46 @@ class Vehiculo extends Conectar
     }
 
     //función para añadir vehiculos a la BDD
-    public function añadir_vehiculo ($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cAseguradora, $tipoCarroceria, $cCliente)
+    public function añadir_vehiculo ($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cAseguradora, $cTipoCarroceria, $cCliente)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, tipoCarroceria, cCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, cTipoCarroceria, cCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $sql = $conectar->prepare($sql);    
+        $sql->bindValue(1, $patenteV);
+        $sql->bindValue(2, $modeloV);
+        $sql->bindValue(3, $colorV);
+        $sql->bindValue(4, $estadoV);
+        $sql->bindValue(5, $estadoRevisionTecnicaV);
+        $sql->bindValue(6, $montoAsegurdora);
+        $sql->bindValue(7, $cAseguradora);
+        $sql->bindValue(8, $cTipoCarroceria);
+        $sql->bindValue(9, $cCliente);
+        $sql->execute();
+    }
+
+    //funcion para eliminar un vehiculo de la BDD
+    public function eliminar_vehiculo($cVehiculo)
+    {
+        $conectar = parent::conexion();
+        $sql = "DELETE FROM vehiculo WHERE cVehiculo = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cVehiculo);
+        $sql->execute();
+    }
+
+    //funcion para actualizar un vehiculo de la BDD 
+    public function actualizar_vehiculo($cVehiculo, $patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAseguradora)
+    {
+        $conectar = parent::conexion();
+        $sql = "UPDATE vehiculo SET patenteV = ?, modeloV = ?, colorV = ?, estadoV = ?, estadoRevisionTecnicaV = ?, montoAseguradora = ? WHERE cVehiculo = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cVehiculo);
         $sql->bindValue(2, $patenteV);
         $sql->bindValue(3, $modeloV);
         $sql->bindValue(4, $colorV);
         $sql->bindValue(5, $estadoV);
         $sql->bindValue(6, $estadoRevisionTecnicaV);
-        $sql->bindValue(7, $montoAsegurdora);
-        $sql->bindValue(8, $cAseguradora);
-        $sql->bindValue(9, $tipoCarroceria);
-        $sql->bindValue(10, $cCliente);
+        $sql->bindValue(7, $montoAseguradora);
         $sql->execute();
     }
 }
