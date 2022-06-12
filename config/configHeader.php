@@ -7,3 +7,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == "OPTIONS") {
     die();
 }
+
+/* header json */
+header('Content-Type: application/json');
