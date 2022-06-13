@@ -16,7 +16,7 @@ class Vehiculo extends Conectar
         $conectar = parent::conexion();
         $sql = "SELECT * FROM vehiculo WHERE cVehiculo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cVehiculo);
+        $sql->bindValue(1, limpiaInput($cVehiculo));
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
