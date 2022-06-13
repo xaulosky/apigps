@@ -5,17 +5,30 @@ GET http://localhost/APIGPS/apigps/api/insumo.php
 
 POST http://localhost/APIGPS/apigps/api/insumo.php
 
+{
+    "nombreInsumo": "BBBBBBBBBBBBBBBBBBB",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
+}
+
 ###
 
 PUT http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "Multitester digital UT-61A",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1
+    "nombreInsumo": "AAAAAAAAAAAAAAAAAa",
+    "cantidad": 1000000,
+    "costo": 90000,
+    "cInsumo":66
 }
 
 ###DELETE
 
-DELETE http://localhost/APIGPS/apigps/api/insumo.php?id=35
+DELETE http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "cInsumo":72,
+    "estado": "feo"
+}

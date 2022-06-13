@@ -6,7 +6,7 @@ class Insumo extends Conectar
     public function get_insumo()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM insumo WHERE cTaller = 1 AND estadoI = 1";
+        $sql = "SELECT * FROM insumo WHERE cTaller = 1 AND estado = 'activo'";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ class Insumo extends Conectar
     }
 
     /* Funcion agregar insumo recive nombreInsumo, cantidad, costo, cTaller=1*/
-    public function agregar_insumo($nombreInsumo, $cantidad, $costo)
+    public function agregar_insumo($nombreInsumo, $cantidad, $costo, $estado)
     {
         $conectar = parent::conexion();
         $sql = "INSERT INTO insumo VALUES(null, ?, ?, ?, ?,?)";
@@ -42,7 +42,7 @@ class Insumo extends Conectar
         $sql->bindValue(1, $nombreInsumo);
         $sql->bindValue(2, $cantidad);
         $sql->bindValue(3, $costo);
-        $sql->bindValue(4, 1);
+        $sql->bindValue(4, $estado);
         $sql->bindValue(5, 1);
         $sql->execute();
     }
