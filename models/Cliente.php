@@ -5,7 +5,7 @@ class Cliente extends Conectar
     public function get_clientes()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna";
+        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna AND c.estadoC = '0'";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -54,18 +54,17 @@ class Cliente extends Conectar
     }
 
     /* function add cliente resive  rutC, emailC, nombreC, apellidoC, direccionC, cComuna */
-    public function add_cliente($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $estadoC, $cComuna)
+    public function add_cliente_activo($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $cComuna)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO cliente (rutC, emailC, nombreC, apellidoC, direccionC, estadoC, cComuna) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO cliente (rutC, emailC, nombreC, apellidoC, direccionC, estadoC, cComuna) VALUES (?, ?, ?, ?, ?, 0, ?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $rutC);
         $sql->bindValue(2, $emailC);
         $sql->bindValue(3, $nombreC);
         $sql->bindValue(4, $apellidoC);
         $sql->bindValue(5, $direccionC);
-        $sql->bindValue(6, $estadoC);
-        $sql->bindValue(7, $cComuna);
+        $sql->bindValue(6, $cComuna);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -92,7 +91,7 @@ class Cliente extends Conectar
     public function delete_cliente($id)
     {
         $conectar = parent::conexion();
-        $sql = "DELETE FROM cliente WHERE cCliente = ?";
+        $sql = "UPDATE cliente SET estadoC = '1' WHERE cCliente = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $id);
         $sql->execute();
