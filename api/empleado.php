@@ -19,8 +19,18 @@ switch ($method) {
     case 'GET':
         echo json_encode($empleado->get_empleados());
         break;
-    
-    default:
-        echo json_encode(array('msg' => 'Metodo no soportado'));
+    case 'POST':
+            $empleado->crear_empleado($body['rutEmpleado'], $body['nombreEmpleado'], $body['apellidoEmpleado'], $body['emailEmpleado'], $body['numeroTelefonoEmpleado'], $body['cRolE'], $body['cTaller']);
+        echo json_encode(array('msg' => 'Agregado Correctamente'));
+        break;
+    case 'PUT':
+        $empleado->crear_empleado($body['rutEmpleado'], $body['nombreEmpleado'], $body['apellidoEmpleado'], $body['emailEmpleado'], $body['numeroTelefonoEmpleado'], $body['cRolE'], $body['cTaller']);
+        break;
+    case 'DELETE':
+        $empleado->delete_empleado($body['cEmpleado']);
         break;
 }
+
+
+
+?>
