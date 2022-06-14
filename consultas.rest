@@ -22,7 +22,7 @@ GET http://localhost/apigps/apigps/api/trabajo.php
 
 ###
 
-GET http://localhost/apigps/apigps/api/trabajo.php?cTrabajo=2
+GET http://localhost/apigps/apigps/api/trabajo.php?cTrabajo=1
 
 ###
 POST http://localhost/apigps/apigps/api/trabajo.php
@@ -39,4 +39,15 @@ content-type: application/json
     "cTipoT": 1,
     "cEmpleado": 1,
     "cTipoE": 1
+
+
 }
+###
+DELETE http://localhost/apigps/apigps/api/trabajo.php
+content-type: application/json
+
+{
+    "cTrabajo": 3
+
+}
+###

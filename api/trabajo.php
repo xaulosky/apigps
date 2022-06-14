@@ -24,7 +24,8 @@ switch ($method) {
         $trabajo->update_trabajo($body['nombreTrabajo'], $body['descripcionTrabajo'], $body['fechaEstimadaT'], $body['fechaRealT'], $body['costoT'], $body['horasT'], $body['cOrdenTrabajo'], $body['cTipoT'], $body['cEmpleado'], $body['cTipoE'] );
         break;
     case 'DELETE':
-        $trabajo->delete_trabajo($body['cTrabajo']);
+        $trabajo->delete_trabajo($_GET['cTrabajo']);
+        echo json_encode(array('msg' => 'Eliminado Correctamente'));
         break;
 }
 
