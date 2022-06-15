@@ -1,4 +1,4 @@
-POST http://localhost/apigps/api/login.php
+POST http://localhost:8080/apigps/api/login.php
 
 {
     "email": "b@b.cl",
