@@ -6,7 +6,51 @@ GET http://localhost/APIGPS/apigps/api/insumo.php
 POST http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "GGGGGGGGGGGGGGG",
+    "nombreInsumo": "AAAAAAAAAAAAAA",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
+}
+###AGREGAR INSUMO
+
+POST http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "nombreInsumo": "BBBBBBBBBBBBB",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
+}
+###AGREGAR INSUMO
+
+POST http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "nombreInsumo": "CCCCCCCCCCCC",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
+}
+###AGREGAR INSUMO
+
+POST http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "nombreInsumo": "DDDDDDDDDDDD",
+    "cantidad": "15",
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
+}
+###AGREGAR INSUMO
+
+POST http://localhost/APIGPS/apigps/api/insumo.php
+
+{
+    "nombreInsumo": "EEEEEEEEEEE",
     "cantidad": "15",
     "costo": 39900,
     "cInsumo":1,
