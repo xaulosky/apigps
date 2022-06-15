@@ -16,6 +16,8 @@ switch ($method) {
     case 'GET':
         if (isset($_GET['cVehiculo'])) {
             echo json_encode($vehiculo->get_vehiculo($_GET['cVehiculo']));
+        } else if (isset($_GET["cCliente"])) {
+            echo json_encode($vehiculo->get_vehiculo_por_cCliente($_GET["cCliente"]));
         } else {
             echo json_encode($vehiculo->get_vehiculos());
         }
