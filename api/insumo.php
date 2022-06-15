@@ -44,8 +44,8 @@
         break;
 
     case 'DELETE':
-        if ($body['cInsumo'] && $body['estado']){
-            $insumo->update_estado_insumo($body['estado'], $body['cInsumo']);
+        if (isset($body['cInsumo'])){
+            $insumo->update_estado_insumo($body['cInsumo']);
             echo json_encode(array('msg' => 'Insumo eliminado'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos para eliminar el insumo'));

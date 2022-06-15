@@ -61,23 +61,22 @@ class Insumo extends Conectar
     }
     /* update eliminar insumo*/
 
-    public function update_estado_insumo( $estado, $cInsumo)
+    public function update_estado_insumo($cInsumo)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE insumo SET estado = ? WHERE cInsumo = ?";
+        $sql = "UPDATE insumo SET estadoI = 0 WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $estado);
-        $sql->bindValue(2, $cInsumo);
+        $sql->bindValue(1, $cInsumo);
         $sql->execute();
     }
 
     /* Eliminar insumo recive cInsumo */
-    public function delete_insumo($id)
+    public function delete_insumo($cInsumo)
     {
         $conectar = parent::conexion();
         $sql = "DELETE FROM insumo WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $id);
+        $sql->bindValue(1, $cInsumo);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }

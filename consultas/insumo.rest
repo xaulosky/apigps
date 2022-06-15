@@ -6,7 +6,7 @@ GET http://localhost/APIGPS/apigps/api/insumo.php
 POST http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "BBBBBBBBBBBBBBBBBBB",
+    "nombreInsumo": "GGGGGGGGGGGGGGG",
     "cantidad": "15",
     "costo": 39900,
     "cInsumo":1,
@@ -18,10 +18,10 @@ POST http://localhost/APIGPS/apigps/api/insumo.php
 PUT http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "AAAAAAAAAAAAAAAAAa",
+    "nombreInsumo": "BBBBBBBBBBB",
     "cantidad": 1000000,
     "costo": 90000,
-    "cInsumo":66
+    "cInsumo":88
 }
 
 ###DELETE
@@ -29,6 +29,6 @@ PUT http://localhost/APIGPS/apigps/api/insumo.php
 DELETE http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "cInsumo":72,
-    "estado": "feo"
+    "cInsumo":89
+
 }
