@@ -7,7 +7,7 @@ class Login extends Conectar
     {
         $password = md5($password);
         $conectar = parent::conexion();
-        $sql = "SELECT cUsuario, email, cRolU, cTaller, nombreU  FROM usuario WHERE email = ? AND clave = ?";
+        $sql = "SELECT u.cUsuario, u.email, u.cRolU, u.cTaller, u.nombreU, u.cRolU, r.nombreRolU, t.nombreTaller FROM usuario u, rolUsuario r, taller t WHERE u.email = ? AND u.clave = ? AND u.cRolU = r.cRolU AND u.cTaller = t.cTaller AND u.estadoU = '1'";
         $stmt = $conectar->prepare($sql);
         $stmt->bindValue(1, $usuario);
         $stmt->bindValue(2, $password);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 GET http://localhost/APIgps/apigps/api/vehiculo.php
 
 ###
@@ -8,10 +9,26 @@ POST http://localhost/APIgps/apigps/api/vehiculo.php
     
     "patenteV": "XXXXXX",
     "modeloV": "CAMAAAAION",
+=======
+GET http://localhost:8080/apigps/api/vehiculo.php?cCliente=1
+
+###
+
+GET http://localhost/apigps/api/vehiculo.php?cVehiculo=5
+
+###
+
+POST http://localhost:8080/apigps/api/vehiculo.php
+
+{
+    "patenteV": "XXXX",
+    "modeloV": "CAM",
+>>>>>>> d7539b9d56355105481e5e4048412bac1645073b
     "colorV": "EEEEE",
     "estadoV": "FFFF",
     "estadoRevisionTecnicaV": "AAA",
     "montoAseguradora": 123123,
+<<<<<<< HEAD
     "cAseguradora": 1,
     "cTipoCarroceria": 1,
     "cCliente": 1
@@ -35,3 +52,9 @@ PUT http://localhost/APIGPS/apigps/api/vehiculo.php
 }
 
 
+=======
+    "cCliente": 1,
+    "cAseguradora": null,
+    "cTipoCarroceria": null
+}
+>>>>>>> d7539b9d56355105481e5e4048412bac1645073b
