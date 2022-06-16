@@ -18,7 +18,7 @@ POST http://localhost/APIgps/apigps/api/vehiculo.php
 }
 
 #####
-DELETE http://localhost/APIGPS/apigps/api/vehiculo.php?cVehiculo=2
+DELETE http://localhost/APIGPS/apigps/api/vehiculo.php?cVehiculo=3
 
 
 #####
