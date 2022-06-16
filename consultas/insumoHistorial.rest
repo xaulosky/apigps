@@ -1,0 +1,13 @@
+###
+GET http://localhost/APIGPS/apigps/api/insumoHistorial.php?cInsumo=137
+
+###
+
+PUT http://localhost/APIGPS/apigps/api/insumoHistorial.php
+
+{
+    "nombreInsumo": "holaaaa",
+    "cantidad": 20,
+    "costo": 300,
+    "cInsumo": 137,
+}

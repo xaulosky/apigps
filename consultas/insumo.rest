@@ -1,5 +1,6 @@
 ###CONSULTAR POR CODIGO INSUMO
-GET http://localhost/APIGPS/apigps/api/insumo.php
+GET http://localhost/APIGPS/apigps/api/insumo.php?cTaller=1
+
 
 ###AGREGAR INSUMO
 
@@ -7,50 +8,6 @@ POST http://localhost/APIGPS/apigps/api/insumo.php
 
 {
     "nombreInsumo": "AAAAAAAAAAAAAA",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1,
-    "estado": 1
-}
-###AGREGAR INSUMO
-
-POST http://localhost/APIGPS/apigps/api/insumo.php
-
-{
-    "nombreInsumo": "BBBBBBBBBBBBB",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1,
-    "estado": 1
-}
-###AGREGAR INSUMO
-
-POST http://localhost/APIGPS/apigps/api/insumo.php
-
-{
-    "nombreInsumo": "CCCCCCCCCCCC",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1,
-    "estado": 1
-}
-###AGREGAR INSUMO
-
-POST http://localhost/APIGPS/apigps/api/insumo.php
-
-{
-    "nombreInsumo": "DDDDDDDDDDDD",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1,
-    "estado": 1
-}
-###AGREGAR INSUMO
-
-POST http://localhost/APIGPS/apigps/api/insumo.php
-
-{
-    "nombreInsumo": "EEEEEEEEEEE",
     "cantidad": "15",
     "costo": 39900,
     "cInsumo":1,
@@ -65,7 +22,8 @@ PUT http://localhost/APIGPS/apigps/api/insumo.php
     "nombreInsumo": "BBBBBBBBBBB",
     "cantidad": 1000000,
     "costo": 90000,
-    "cInsumo":88
+    "cInsumo":128,
+    "cTaller":1
 }
 
 ###DELETE
@@ -73,6 +31,6 @@ PUT http://localhost/APIGPS/apigps/api/insumo.php
 DELETE http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "cInsumo":89
+    "cInsumo":137
 
 }
