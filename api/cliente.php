@@ -53,4 +53,5 @@ switch ($method) {
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));
         }
+        break;
 }
