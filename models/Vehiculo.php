@@ -145,6 +145,7 @@ class Vehiculo extends Conectar
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cVehiculo);
         $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //funcion para actualizar un vehiculo de la BDD 
