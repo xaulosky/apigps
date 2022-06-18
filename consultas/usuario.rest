@@ -1,0 +1,10 @@
+POST http://localhost/apigps/api/usuario.php
+
+{
+    "email": "pascifuentes@gmail.com",
+    "clave": "a"
+}
+
+###
+
+GET http://localhost/apigps/api/usuario.php

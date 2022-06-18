@@ -1,6 +1,9 @@
 <?php
 /* header json */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66cee6aeec0fe0b019774aef3bdded5661394eb2
 header('Content-Type: application/json');
 require_once("../config/configHeader.php");
 require_once '../config/conexion.php';
@@ -13,8 +16,9 @@ $body = json_decode(file_get_contents("php://input"), true);
 /* method*/
 $method = $_SERVER['REQUEST_METHOD'];
 
-switch($method){
+switch ($method) {
     case 'GET':
+<<<<<<< HEAD
         if(isset($_GET['id'])){
             echo json_encode($usuario->get_usuario($_GET['id']));
         } else {
@@ -28,6 +32,13 @@ switch($method){
         } else{
             echo json_encode(array('msg' => 'Datos insuficientes'));
         }
+=======
+        echo json_encode($usuario->get_usuarios());
+        break;
+    case 'POST':
+        $usuario->crear_usuario($body['email'], $body['clave']);
+        echo json_encode(array('msg' => 'Agregado Correctamente'));
+>>>>>>> 66cee6aeec0fe0b019774aef3bdded5661394eb2
         break;
     case 'PUT':
         if(isset($body['nombreU'])&&isset($body['email'])&&isset($body['clave'])&&isset($body['cRolU'])&&isset($body['cUsuario'])){

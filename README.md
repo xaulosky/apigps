@@ -11,5 +11,4 @@ En la carpeta config se encuentra la configuración para la conexion a la base d
 La ruta para acceder a la api es: http://localhost/apigps/api/ aquí se llama a los archivos que se encuentran en la carpeta api
 
 # Consultas
-En el archivo consultas.rest se encuentran las consultas que se pueden realizar a la api
-
+En el archivo consultas.rest se encuentran las consultas que se pueden realizar a la api, debe instalar rest client en vscode para poder usar estas consultas

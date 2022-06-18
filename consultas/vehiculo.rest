@@ -1,0 +1,21 @@
+GET http://localhost:8080/apigps/api/vehiculo.php?cCliente=1
+
+###
+
+GET http://localhost/apigps/api/vehiculo.php?cVehiculo=5
+
+###
+
+POST http://localhost:8080/apigps/api/vehiculo.php
+
+{
+    "patenteV": "XXXX",
+    "modeloV": "CAM",
+    "colorV": "EEEEE",
+    "estadoV": "FFFF",
+    "estadoRevisionTecnicaV": "AAA",
+    "montoAseguradora": 123123,
+    "cCliente": 1,
+    "cAseguradora": null,
+    "cTipoCarroceria": null
+}
