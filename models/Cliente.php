@@ -97,4 +97,14 @@ class Cliente extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /* funcion filtrar por nombreC */
+    public function filtrar_cliente_nombre($nombre)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM cliente WHERE nombreC LIKE '%$nombre%'";
+        $sql = $conectar->prepare($sql);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

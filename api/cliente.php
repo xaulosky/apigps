@@ -15,13 +15,13 @@ switch ($method) {
     case 'GET':
         if (isset($_GET['id'])) {
             echo json_encode($cliente->get_cliente($_GET['id']));
-        } else if(isset($_GET['nombreC'])){
+        } else if (isset($_GET['nombreC'])) {
             echo json_encode($cliente->get_cliente_por_nombre($_GET['nombreC']));
-        } else if(isset($_GET['rutC'])){
+        } else if (isset($_GET['rutC'])) {
             echo json_encode($cliente->get_cliente_por_rut($_GET['rutC']));
-        }  else if(isset($_GET['apellidoC'])){
+        } else if (isset($_GET['apellidoC'])) {
             echo json_encode($cliente->get_cliente_por_apellido($_GET['apellidoC']));
-        } else{
+        } else {
             echo json_encode($cliente->get_clientes());
         }
         break;
