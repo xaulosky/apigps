@@ -5,7 +5,7 @@ class Vehiculo extends Conectar
     public function get_vehiculos()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo";
+        $sql = "SELECT * FROM vehiculo ORDER BY cVehiculo DESC";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
