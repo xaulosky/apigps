@@ -16,6 +16,12 @@ switch ($method) {
         echo json_encode($repuesto->get_repuestos());
         break;
     case 'POST':
+        if(isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['estadoRepuesto'])){
+            $repuesto->add_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['estadoRepuesto']);
+            echo json_encode(array('msg' => 'Repuesto Agregado'));
+        } else{
+            echo json_encode(array('msg' => 'Falta rellenar algún campo'));
+        }
         break;
     case 'PUT':
         break;

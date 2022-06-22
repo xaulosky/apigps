@@ -5,7 +5,11 @@ class Vehiculo extends Conectar
     public function get_vehiculos()
     {
         $conectar = parent::conexion();
+<<<<<<< HEAD
         $sql = "SELECT * FROM vehiculo ORDER BY cVehiculo DESC";
+=======
+        $sql = "SELECT v.cVehiculo, v.patenteV, v.modeloV, v.colorV, v.estadoV, c.cCliente, c.rutC, c.nombreC FROM vehiculo v, cliente c WHERE v.cCliente = c.cCliente";
+>>>>>>> 2cd3cea4adaf3811dab06d918b96efc1ed55ec9a
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -31,7 +35,7 @@ class Vehiculo extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-   //Función para obtener un vehiculo por su modelo
+    //Función para obtener un vehiculo por su modelo
     public function get_vehiculo_por_modelo($modeloV)
     {
         $conectar = parent::conexion();
@@ -96,7 +100,7 @@ class Vehiculo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     //función para obtener un vehiculo por su tipo de carrocería
     public function get_vehiculo_por_TipoCarroceria($tipoCarroceria)
     {
@@ -120,11 +124,11 @@ class Vehiculo extends Conectar
     }
 
     //función para añadir vehiculos a la BDD
-    public function añadir_vehiculo ($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cAseguradora, $cTipoCarroceria, $cCliente)
+    public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cAseguradora, $cTipoCarroceria, $cCliente)
     {
         $conectar = parent::conexion();
         $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, cTipoCarroceria, cCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $sql = $conectar->prepare($sql);    
+        $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $patenteV);
         $sql->bindValue(2, $modeloV);
         $sql->bindValue(3, $colorV);
