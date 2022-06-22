@@ -1,5 +1,4 @@
 <?php
-/* cTALLER ARREGLAR PARA OTROS TALLERES. */
 class Insumo extends Conectar
 {
 
@@ -11,7 +10,6 @@ class Insumo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    /* Funcion obtener insumo por nombre */
     public function get_insumo_por_nombre($nombreInsumo)
     {
         $conectar = parent::conexion();
@@ -22,7 +20,6 @@ class Insumo extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /* funcion obtener insumo por cInsumo */
     public function get_insumo_por_cInsumo($cInsumo)
     {
         $conectar = parent::conexion();
@@ -33,7 +30,6 @@ class Insumo extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /* Funcion agregar insumo recive nombreInsumo, cantidad, costo, cTaller=1*/
     public function agregar_insumo($nombreInsumo, $cantidad, $costo, $estado)
     {
         $conectar = parent::conexion();
@@ -47,7 +43,6 @@ class Insumo extends Conectar
         $sql->execute();
     }
 
-    /* Actualizar insumo recive nombreInsumo, cantidad, costo, cTaller=1 */
     public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo)
     {
         $conectar = parent::conexion();
@@ -59,7 +54,6 @@ class Insumo extends Conectar
         $sql->bindValue(4, $cInsumo);
         $sql->execute();
     }
-    /* update eliminar insumo*/
 
     public function update_estado_insumo( $estado, $cInsumo)
     {
@@ -71,7 +65,6 @@ class Insumo extends Conectar
         $sql->execute();
     }
 
-    /* Eliminar insumo recive cInsumo */
     public function delete_insumo($id)
     {
         $conectar = parent::conexion();

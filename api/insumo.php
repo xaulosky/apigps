@@ -21,27 +21,28 @@
     case 'POST':
         if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) && isset($body['cTaller'])){
             $insumo->agregar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'], $body['cTaller']);
-            echo json_encode(array('msg' => 'Insumo agregado'));
+            echo json_encode(array('msg' => 'ok'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos para agregar el insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
         break;
 
     case 'PUT':
         if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) && isset($body['cInsumo']) && isset($body['cTaller'])){
+            
             $insumo->actualizar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo'] ,$body['cTaller']);
-            echo json_encode(array('msg' => 'Insumo actualizado'));
+            echo json_encode(array( 'msg' => 'ok'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos actulizar insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
         break;
 
     case 'DELETE':
-        if (isset($body['cInsumo'])){
-            $insumo->update_estado_insumo($body['cInsumo']);
-            echo json_encode(array('msg' => 'Insumo eliminado'));
+        if (isset($_GET['cInsumo'])){
+            $insumo->update_estado_insumo($_GET['cInsumo']);
+            echo json_encode(array('msg' => 'ok'));
         } else {
-            echo json_encode(array('msg' => 'Faltan datos para eliminar el insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
         break;
 }

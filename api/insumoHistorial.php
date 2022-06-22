@@ -28,6 +28,3 @@ switch ($method) {
             echo json_encode(array('msg' => 'Error al restaurar insumo'));
         }
 }   
-
-
-/* echo json_encode($insumoHistorial->get_historial_insumo($_GET['cInsumo'])); */

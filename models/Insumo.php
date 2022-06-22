@@ -64,6 +64,7 @@ class Insumo extends Conectar
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cInsumo);
         $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function delete_insumo($cInsumo)
@@ -75,4 +76,5 @@ class Insumo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 }
