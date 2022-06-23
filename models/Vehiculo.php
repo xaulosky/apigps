@@ -120,7 +120,7 @@ class Vehiculo extends Conectar
     }
 
     //función para añadir vehiculos a la BDD
-    public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cAseguradora, $cTipoCarroceria, $cCliente)
+    public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora,$cCliente, $cAseguradora, $cTipoCarroceria)
     {
         $conectar = parent::conexion();
         $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, cTipoCarroceria, cCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
