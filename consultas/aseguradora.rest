@@ -1,0 +1,10 @@
+GET http://localhost/APIgps/apigps/api/aseguradora.php
+
+###
+
+POST http://localhost/APIgps/apigps/api/aseguradora.php
+
+{
+    "nombreAsegurdora": "Aseguradorasdeprueba",
+    "tipoSeguro": "Segurosdeprueba",
+}
