@@ -21,15 +21,15 @@ switch ($method) {
             echo json_encode($cliente->get_cliente_por_rut($_GET['rutC']));
         } else if (isset($_GET['apellidoC'])) {
             echo json_encode($cliente->get_cliente_por_apellido($_GET['apellidoC']));
-        } else {
-            echo json_encode($cliente->get_clientes());
+        } else if (isset($_GET['cTaller'])) {
+            echo json_encode($cliente->get_clientes($_GET['cTaller']));
         }
         break;
 
     case 'POST':
         /* valida que todos los datos sean enviados de lo contrario envia un mensaje de que faltan datos */
-        if (isset($body['rutC']) && isset($body['emailC']) && isset($body['nombreC']) && isset($body['apellidoC']) && isset($body['direccionC']) && isset($body['cComuna'])) {
-            $cliente->add_cliente_activo($body['rutC'], $body['emailC'], $body['nombreC'], $body['apellidoC'], $body['direccionC'],  $body['cComuna'],);
+        if (isset($body['rutC']) && isset($body['emailC']) && isset($body['nombreC']) && isset($body['apellidoC']) && isset($body['direccionC']) && isset($body['cComuna']) && isset($body['cTaller'])) {
+            $cliente->add_cliente_activo($body['rutC'], $body['emailC'], $body['nombreC'], $body['apellidoC'], $body['direccionC'],  $body['cComuna'], $body['cTaller']);
             echo json_encode(array('msg' => 'Cliente agregado'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));

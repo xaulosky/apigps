@@ -2,10 +2,10 @@
 
 class Cliente extends Conectar
 {
-    public function get_clientes()
+    public function get_clientes($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna AND c.estadoC = '0'";
+        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna AND c.estadoC = '0' AND c.cTaller = '$cTaller'";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -54,10 +54,10 @@ class Cliente extends Conectar
     }
 
     /* function add cliente resive  rutC, emailC, nombreC, apellidoC, direccionC, cComuna */
-    public function add_cliente_activo($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $cComuna)
+    public function add_cliente_activo($rutC, $emailC, $nombreC, $apellidoC, $direccionC, $cComuna, $cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO cliente (rutC, emailC, nombreC, apellidoC, direccionC, estadoC, cComuna) VALUES (?, ?, ?, ?, ?, 0, ?)";
+        $sql = "INSERT INTO cliente (rutC, emailC, nombreC, apellidoC, direccionC, estadoC, cComuna, cTaller) VALUES (?, ?, ?, ?, ?, 0, ?, ?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $rutC);
         $sql->bindValue(2, $emailC);
@@ -65,6 +65,7 @@ class Cliente extends Conectar
         $sql->bindValue(4, $apellidoC);
         $sql->bindValue(5, $direccionC);
         $sql->bindValue(6, $cComuna);
+        $sql->bindValue(7, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
