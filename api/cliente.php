@@ -29,7 +29,6 @@ switch ($method) {
     case 'POST':
         /* valida que todos los datos sean enviados de lo contrario envia un mensaje de que faltan datos */
         if (isset($body['rutC']) && isset($body['emailC']) && isset($body['nombreC']) && isset($body['apellidoC']) && isset($body['direccionC']) && isset($body['cComuna'])) {
-
             echo json_encode($cliente->add_cliente($body['rutC'], $body['emailC'], $body['nombreC'], $body['apellidoC'], $body['direccionC'], $body['estadoC'],  $body['cComuna']));
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));
