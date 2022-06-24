@@ -8,7 +8,7 @@ POST http://localhost/APIGPS/apigps/api/insumo.php
 
 {
     "nombreInsumo": "AAAAAAAAAAAAAA",
-    "cantidad": "15",
+    "cantidad": 15,
     "costo": 39900,
     "cInsumo":1,
     "estado": 1
