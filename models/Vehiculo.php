@@ -118,6 +118,16 @@ class Vehiculo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    //función para obtener un vehiculo por su cTaller
+    public function get_vehiculo_por_cTaller($cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM vehiculo WHERE cTaller = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     //función para añadir vehiculos a la BDD
     public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora,$cCliente, $cAseguradora, $cTipoCarroceria)
