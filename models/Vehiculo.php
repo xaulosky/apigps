@@ -98,12 +98,12 @@ class Vehiculo extends Conectar
     }
 
     //función para obtener un vehiculo por su tipo de carrocería
-    public function get_vehiculo_por_TipoCarroceria($tipoCarroceria)
+    public function get_vehiculo_por_TipoCarroceria($cTipoCarroceria)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM tipoCarroceria WHERE tipoCarroceria = ?";
+        $sql = "SELECT * FROM tipoCarroceria WHERE cTipoCarroceria = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $tipoCarroceria);
+        $sql->bindValue(1, $cTipoCarroceria);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -115,16 +115,6 @@ class Vehiculo extends Conectar
         $sql = "SELECT * FROM vehiculo WHERE cCliente = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cCliente);
-        $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-    }
-    //función para obtener un vehiculo por su cTaller
-    public function get_vehiculo_por_cTaller($cTaller)
-    {
-        $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE cTaller = ?";
-        $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }

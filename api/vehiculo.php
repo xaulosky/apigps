@@ -26,8 +26,8 @@ switch ($method) {
 
     case 'POST':
         /* validar que existan */
-        if (isset($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria'], $body['cTaller'])) {
-            $vehiculo->añadir_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria'], $body['cTaller']);
+        if (isset($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria'])) {
+            $vehiculo->añadir_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria']);
             echo json_encode(array('msg' => 'Agregado correctamente'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));
@@ -36,8 +36,8 @@ switch ($method) {
 
     case 'PUT':
         /* validar que existan */
-        if (isset($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cTaller'])) {
-            $vehiculo->actualizar_vehiculo($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cTaller']);
+        if (isset($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'])) {
+            $vehiculo->actualizar_vehiculo($body['cVehiculo'], $body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora']);
             echo json_encode(array('msg' => 'Actualizado correctamente'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos o no existe el vehiculo'));
