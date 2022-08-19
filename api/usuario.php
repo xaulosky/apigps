@@ -30,7 +30,7 @@ switch ($method) {
         break;
     case 'PUT':
         if(isset($body['nombreU'])&&isset($body['email'])&&isset($body['clave'])&&isset($body['cRolU'])&&isset($body['cUsuario'])){
-            $usuario->update_usuario($body['nombreU'],$body['email'],$body['clave'],$body['cRolU'],$body['cUsuario'],);
+            $usuario->update_usuario($body['nombreU'],$body['email'],$body['clave'],$body['cRolU'],$body['cUsuario']);
             echo json_encode(array('msg' => 'Actualizado'));
         } else{
             echo json_encode(array('msg' => 'Datos insuficientes'));

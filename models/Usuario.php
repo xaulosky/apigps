@@ -24,13 +24,13 @@ class Usuario extends Conectar
     public function add_usuario($email,$clave,$cRolU,$cTaller,$nombreU)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO usuario VALUES(null,?, MD5(?) , 1 ,? ,? ,?) ";
+        $sql = "INSERT INTO usuario VALUES(null,?,?,MD5(?),?,?,1) ";
         $sql = $conectar->prepare($sql); 
-        $sql->bindValue(1, $email);
-        $sql->bindValue(2, $clave);
-        $sql->bindValue(3, $cRolU);
-        $sql->bindValue(4, $cTaller);
-        $sql->bindValue(5, $nombreU);
+        $sql->bindValue(1, $nombreU);
+        $sql->bindValue(2, $email);
+        $sql->bindValue(3, $clave);
+        $sql->bindValue(4, $cRolU);
+        $sql->bindValue(5, $cTaller);
         $sql->execute();
     }
     public function update_usuario($nombreU,$email, $clave, $cRolU,$cUsuario)

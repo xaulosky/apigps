@@ -1,10 +1,14 @@
 POST http://localhost/apigps/api/usuario.php
 
 {
-    "email": "pascifuentes@gmail.com",
-    "clave": "a"
+    "nombreU": "Richard Calbullanca",
+    "email": "r@r.cl",
+    "clave": "1234"
+    "cRolU": 3,
+    "cTaller": 1,
+    
 }
 
 ###
 
-GET http://localhost/apigps/api/usuario.php
+GET http://localhost/apigps/api/usuario.php?cTaller=1
