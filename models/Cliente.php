@@ -108,4 +108,23 @@ class Cliente extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function clientes_eliminados($cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT c.cCliente, c.rutC, c.emailC, c.nombreC, c.apellidoC, c.direccionC, c.estadoC, co.nombreC as nombreCo FROM cliente c, comuna co WHERE c.cComuna = co.cComuna AND c.estadoC = '1' AND c.cTaller = '$cTaller'";
+        $sql = $conectar->prepare($sql);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function restore_cliente($id)
+    {
+        $conectar = parent::conexion();
+        $sql = "UPDATE cliente SET estadoC = '0' WHERE cCliente = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $id);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
