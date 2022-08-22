@@ -23,8 +23,8 @@ switch ($method) {
     case 'PUT':
         if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) && isset($body['cInsumo'])){
             $insumoHistorial->restaurar_historial_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo']);
-            echo json_encode(array('msg' => 'Insumo restaurado')); 
+            echo json_encode(array('msg' => 'ok')); 
         }else{
-            echo json_encode(array('msg' => 'Error al restaurar insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
 }   
