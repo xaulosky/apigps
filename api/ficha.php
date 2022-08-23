@@ -13,10 +13,17 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        echo json_encode($ficha->get_fichas());
+        if (isset($_GET["cTaller"]) && isset($_GET["cFicha"])) {
+            echo json_encode($ficha->get_ficha_by_id($_GET["cTaller"], $_GET["cFicha"]));
+        } else {
+            echo json_encode($ficha->get_fichas($_GET["cTaller"]));
+        }
         break;
     case 'POST':
         /* valida que todos los datos sean enviados de lo contrario envia un mensaje de que faltan datos */
         echo json_encode($ficha->add_ficha($body['fechaIngresoFicha'], $body['fechaEntregaEstimada'], $body['cTaller'], $body['cVehiculo'], $body['cUsuario'], $body['fichaObservacion']));
+        break;
+    case 'DELETE':
+        $ficha->delete_ficha($_GET['cFicha']);
         break;
 }
