@@ -15,40 +15,34 @@
 
  switch ($method) {
      case 'GET':
-         if (isset($_GET['nombreInsumo'])){
-             if($GET['nombreInsumo'])
-             echo json_encode($insumo->get_insumo_por_nombre($_GET['nombreInsumo']));
-         } else if(isset($_GET['cInsumo'])){
-            echo json_encode($insumo->get_insumo_por_cInsumo($_GET['cInsumo']));
-        } else{
-            echo json_encode($insumo->get_insumo());
-        }
-         break;
+            echo json_encode($insumo->get_insumo($_GET['cTaller']));
+            break;
 
     case 'POST':
-        if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) ){
-            $insumo->agregar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'] );
-            echo json_encode(array('msg' => 'Insumo agregado'));
+        if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) && isset($body['cTaller'])){
+            $insumo->agregar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'], $body['cTaller']);
+            echo json_encode(array('msg' => 'ok'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos para agregar el insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
         break;
 
     case 'PUT':
-        if(isset($body['cInsumo']) && isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo'])){
-            $insumo->actualizar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo']);
-            echo json_encode(array('msg' => 'Insumo actualizado'));
+        if(isset($body['nombreInsumo']) && isset($body['cantidad']) && isset($body['costo']) && isset($body['cInsumo']) && isset($body['cTaller'])){
+            
+            $insumo->actualizar_insumo($body['nombreInsumo'], $body['cantidad'], $body['costo'],$body['cInsumo'] ,$body['cTaller']);
+            echo json_encode(array( 'msg' => 'ok'));
         }else{
-            echo json_encode(array('msg' => 'Faltan datos actulizar insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
         break;
 
     case 'DELETE':
-        if (isset($_GET['id'])) {
-            $insumo->delete_insumo($_GET['id']);
-            echo json_encode(array('msg' => 'Insumo eliminado'));
+        if (isset($_GET['cInsumo'])){
+            $insumo->update_estado_insumo($_GET['cInsumo']);
+            echo json_encode(array('msg' => 'ok'));
         } else {
-            echo json_encode(array('msg' => 'Error, no se pudo eliminar insumo'));
+            echo json_encode(array('msg' => 'no'));
         }
-
+        break;
 }

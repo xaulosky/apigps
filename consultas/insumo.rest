@@ -1,15 +1,17 @@
 ###CONSULTAR POR CODIGO INSUMO
-GET http://localhost/APIGPS/apigps/api/insumo.php
+GET http://localhost/APIGPS/apigps/api/insumo.php?cTaller=1
+
 
 ###AGREGAR INSUMO
 
-POST http://localhost/APIGPS/apigps/api/insumo.php?cInsumo
+POST http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "Multitester digital UT-720",
-    "cantidad": "3",
-    "costo": 15990,
-    "cTaller":1
+    "nombreInsumo": "AAAAAAAAAAAAAA",
+    "cantidad": 15,
+    "costo": 39900,
+    "cInsumo":1,
+    "estado": 1
 }
 
 ###
@@ -17,12 +19,13 @@ POST http://localhost/APIGPS/apigps/api/insumo.php?cInsumo
 PUT http://localhost/APIGPS/apigps/api/insumo.php
 
 {
-    "nombreInsumo": "Multitester digital UT-61A",
-    "cantidad": "15",
-    "costo": 39900,
-    "cInsumo":1
+    "nombreInsumo": "BBBBBBBBBBB",
+    "cantidad": 1000000,
+    "costo": 90000,
+    "cInsumo":128,
+    "cTaller":1
 }
 
 ###DELETE
 
-DELETE http://localhost/APIGPS/apigps/api/insumo.php?id=16
+DELETE http://localhost/APIGPS/apigps/api/insumo.php?cInsumo=77

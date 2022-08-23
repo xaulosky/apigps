@@ -2,12 +2,11 @@
 class Insumo extends Conectar
 {
 
-    public function get_insumo($cTaller)
+    public function get_insumo()
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM insumo WHERE cTaller = ? AND estadoI = 1";
+        $sql = "SELECT * FROM insumo WHERE cTaller = 1 AND estado = 'activo'";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -31,50 +30,48 @@ class Insumo extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function agregar_insumo($nombreInsumo, $cantidad, $costo, $cTaller)
+    public function agregar_insumo($nombreInsumo, $cantidad, $costo, $estado)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO insumo(nombreInsumo,cantidad,costo,estadoI,cTaller) VALUES(?, ?, ?, ?,?)";
+        $sql = "INSERT INTO insumo VALUES(null, ?, ?, ?, ?,?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreInsumo);
         $sql->bindValue(2, $cantidad);
         $sql->bindValue(3, $costo);
-        $sql->bindValue(4, 1);
-        $sql->bindValue(5, $cTaller);
+        $sql->bindValue(4, $estado);
+        $sql->bindValue(5, 1);
         $sql->execute();
     }
 
-    public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo, $cTaller)
+    public function actualizar_insumo($nombreInsumo, $cantidad, $costo, $cInsumo)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ? AND cTaller = ?";
+        $sql = "UPDATE insumo SET nombreInsumo = ?, cantidad = ?, costo = ? WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreInsumo);
         $sql->bindValue(2, $cantidad);
         $sql->bindValue(3, $costo);
         $sql->bindValue(4, $cInsumo);
-        $sql->bindValue(5, $cTaller);
         $sql->execute();
     }
 
-    public function update_estado_insumo($cInsumo)
+    public function update_estado_insumo( $estado, $cInsumo)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE insumo SET estadoI = 0 WHERE cInsumo = ?";
+        $sql = "UPDATE insumo SET estado = ? WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cInsumo);
+        $sql->bindValue(1, $estado);
+        $sql->bindValue(2, $cInsumo);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function delete_insumo($cInsumo)
+    public function delete_insumo($id)
     {
         $conectar = parent::conexion();
         $sql = "DELETE FROM insumo WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cInsumo);
+        $sql->bindValue(1, $id);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 }

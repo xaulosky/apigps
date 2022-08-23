@@ -1,0 +1,5 @@
+###CONSULTAR POR CODIGO INSUMO
+GET http://localhost/APIGPS/apigps/api/insumoEliminado.php
+
+####
+
