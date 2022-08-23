@@ -17,11 +17,11 @@ switch ($method) {
         echo json_encode($trabajo->get_trabajos());
         break;
     case 'POST':
-            $trabajo->crear_trabajo($body['nombreTrabajo'], $body['descripcionTrabajo'], $body['fechaEstimadaT'], $body['fechaRealT'], $body['costoT'], $body['horasT'], $body['cOrdenTrabajo'], $body['cTipoT'], $body['cEmpleado'], $body['cTipoE'] );
+            $trabajo->crear_trabajo($body['nombreTrabajo'], $body['descripcionTrabajo'], $body['fechaEstimadaT'], $body['fechaRealT'], $body['estadoT'], $body['costoT'], $body['horasT'], $body['cOrdenTrabajo'], $body['cTipoT'], $body['cEmpleado'] );
         echo json_encode(array('msg' => 'Agregado Correctamente'));
         break;
     case 'PUT':
-        $trabajo->update_trabajo($body['nombreTrabajo'], $body['descripcionTrabajo'], $body['fechaEstimadaT'], $body['fechaRealT'], $body['costoT'], $body['horasT'], $body['cOrdenTrabajo'], $body['cTipoT'], $body['cEmpleado'], $body['cTipoE'] );
+        $trabajo->update_trabajo($body['nombreTrabajo'], $body['descripcionTrabajo'], $body['fechaEstimadaT'], $body['fechaRealT'], $body['estadoT'], $body['costoT'], $body['horasT'], $body['cOrdenTrabajo'], $body['cTipoT'], $body['cEmpleado'] );
         break;
     case 'DELETE':
         $trabajo->delete_trabajo($_GET['cTrabajo']);

@@ -26,9 +26,10 @@ switch ($method) {
     case 'PUT':
         $empleado->crear_empleado($body['rutEmpleado'], $body['nombreEmpleado'], $body['apellidoEmpleado'], $body['emailEmpleado'], $body['numeroTelefonoEmpleado'], $body['cRolE'], $body['cTaller']);
         break;
-    case 'DELETE':
-        $empleado->delete_empleado($body['cEmpleado']);
-        break;
+        case 'DELETE':
+            $empleado->delete_empleado($_GET['cEmpleado']);
+            echo json_encode(array('msg' => 'Eliminado Correctamente'));
+            break;
 }
 
 
