@@ -1,7 +1,7 @@
-GET http://localhost:8080/apigps/api/repuesto.php?cTaller=1
+GET http://localhost/apigps/api/repuesto.php?cTaller=1
 
 ###
-POST http://localhost:8080/apigps/api/repuesto.php
+POST http://localhost/apigps/api/repuesto.php
 
 {
     nombreRepuesto: "Repuesto 1",
