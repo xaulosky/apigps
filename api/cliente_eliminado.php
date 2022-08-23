@@ -17,14 +17,13 @@ switch ($method) {
             echo json_encode($cliente->clientes_eliminados($_GET['cTaller']));
         }
         break;
-    
+
     case 'DELETE':
         if (isset($body['cCliente'])) {
             $cliente->restore_cliente($body['cCliente']);
             echo json_encode(array('msg' => 'Cliente restaurado'));
-        }else{
+        } else {
             echo json_encode(array('msg' => 'Falta cCliente'));
         }
         break;
 }
-
