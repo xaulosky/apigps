@@ -1,5 +1,8 @@
 <?php
-/* configuracion de los CORS */
+
+header('Content-Type: application/json');
+
+// Configuración de los CORS
 require_once("../config/configHeader.php");
 require_once '../config/conexion.php';
 require_once '../models/Repuesto.php';
@@ -8,23 +11,43 @@ $repuesto = new Repuesto();
 
 $body = json_decode(file_get_contents("php://input"), true);
 
-/* method*/
+// Method
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
+
+    //Obtiene repuestos
     case 'GET':
-        echo json_encode($repuesto->get_repuestos());
+        echo json_encode($repuesto->get_repuestos($_GET['cTaller']));
         break;
+
+    //Valida que los campos necesarios sean llenados
     case 'POST':
-        if(isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['estadoRepuesto'])){
-            $repuesto->add_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['estadoRepuesto']);
+        if (isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['estadoRepuesto'])) {
+            $repuesto->add_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['estadoRepuesto'], $body['cTaller']);
             echo json_encode(array('msg' => 'Repuesto Agregado'));
-        } else{
+        } else {
             echo json_encode(array('msg' => 'Falta rellenar algún campo'));
         }
         break;
+
+    //Edita un repuesto existente
     case 'PUT':
+        if (isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['fechaLlegada']) && isset($body['estadoRepuesto']) && isset($body['cRepuesto'])) {
+            $repuesto->edit_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['fechaLlegada'], $body['estadoRepuesto'], $body['cRepuesto']);
+            echo json_encode(array('msg' => 'Repuesto Editado'));
+        } else {
+            echo json_encode(array('msg' => 'Fallo al editar el repuesto'));
+        }
         break;
+
+    //Borra un repuesto por su código
     case 'DELETE':
+        if (isset($_GET['cRepuesto'])) {
+            $repuesto->delete_repuestos($_GET['cRepuesto']);
+            echo json_encode(array('msg' => 'Repuesto Eliminado'));
+        } else {
+            echo json_encode(array('msg' => 'Fallo al eliminar el repuesto'));
+        }
         break;
 }
