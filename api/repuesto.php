@@ -15,10 +15,13 @@ $body = json_decode(file_get_contents("php://input"), true);
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
+
+    //Obtiene repuestos
     case 'GET':
         echo json_encode($repuesto->get_repuestos($_GET['cTaller']));
         break;
 
+    //Valida que los campos necesarios sean llenados
     case 'POST':
         if (isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['estadoRepuesto'])) {
             $repuesto->add_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['estadoRepuesto'], $body['cTaller']);
@@ -28,6 +31,7 @@ switch ($method) {
         }
         break;
 
+    //Edita un repuesto existente
     case 'PUT':
         if (isset($body['nombreRepuesto']) && isset($body['cantidad']) && isset($body['fechaSolicitud']) && isset($body['fechaLlegada']) && isset($body['estadoRepuesto']) && isset($body['cRepuesto'])) {
             $repuesto->edit_repuestos($body['nombreRepuesto'], $body['cantidad'], $body['fechaSolicitud'], $body['fechaLlegada'], $body['estadoRepuesto'], $body['cRepuesto']);
@@ -37,6 +41,7 @@ switch ($method) {
         }
         break;
 
+    //Borra un repuesto por su código
     case 'DELETE':
         if (isset($_GET['cRepuesto'])) {
             $repuesto->delete_repuestos($_GET['cRepuesto']);
