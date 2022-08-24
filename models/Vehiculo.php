@@ -113,9 +113,19 @@ class Vehiculo extends Conectar
     public function get_vehiculo_por_cCliente($cCliente)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE cCliente = ? AND estadoC=0";
+        $sql = "SELECT * FROM vehiculo WHERE cCliente = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cCliente);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_cliente($cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM cliente WHERE cTaller = ? AND estadoC=0";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
