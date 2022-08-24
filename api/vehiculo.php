@@ -19,15 +19,15 @@ switch ($method) {
             echo json_encode($vehiculo->get_vehiculo($_GET['cVehiculo']));
         } else if (isset($_GET["cCliente"])) {
             echo json_encode($vehiculo->get_vehiculo_por_cCliente($_GET["cCliente"]));
-        } else {
-            echo json_encode($vehiculo->get_vehiculos());
+        } else if(isset($_GET["cTaller"])){
+            echo json_encode($vehiculo->get_vehiculos($_GET["cTaller"]));
         }
         break;
 
     case 'POST':
         /* validar que existan */
         if (isset($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria'])) {
-            $vehiculo->añadir_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria']);
+            $vehiculo->añadir_vehiculo($body['patenteV'], $body['modeloV'], $body['colorV'], $body['estadoV'], $body['estadoRevisionTecnicaV'], $body['montoAseguradora'], $body['cCliente'], $body['cAseguradora'], $body['cTipoCarroceria'], $body['cTaller']);
             echo json_encode(array('msg' => 'Agregado correctamente'));
         } else {
             echo json_encode(array('msg' => 'Faltan datos'));
