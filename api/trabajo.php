@@ -1,4 +1,6 @@
 <?php
+/* configuracion de los CORS */
+require_once("../config/configHeader.php");
 
 /* header json */
 header('Content-Type: application/json');
