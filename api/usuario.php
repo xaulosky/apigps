@@ -32,7 +32,11 @@ switch ($method) {
         if(isset($body['nombreU'])&&isset($body['email'])&&isset($body['clave'])&&isset($body['cRolU'])&&isset($body['cUsuario'])){
             $usuario->update_usuario($body['nombreU'],$body['email'],$body['clave'],$body['cRolU'],$body['cUsuario']);
             echo json_encode(array('msg' => 'Actualizado'));
-        } else{
+        } 
+        if(isset($body['clave'])&&isset($body['cUsuario'])){
+            $usuario->cambiar_claves($body['clave'],$body['cUsuario']);
+            echo json_encode(array('msg' => 'Actualizado'));
+        }else{
             echo json_encode(array('msg' => 'Datos insuficientes'));
         }
         break;

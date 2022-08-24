@@ -47,7 +47,7 @@ class Usuario extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
     /* cambiar clave */
-    public function cambiar_clave($cUsuario, $clave)
+    public function cambiar_claves($cUsuario, $clave)
     {
         $conectar = parent::conexion();
         $sql = "UPDATE usuario SET estadoU = 0 WHERE cUsuario = ?";
