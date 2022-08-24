@@ -21,7 +21,7 @@ class Trabajo extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-   
+
     public function crear_trabajo($nombreTrabajo, $descripcionTrabajo, $fechaEstimadaT, $fechaRealT, $estadoT, $costoT, $horasT, $cOrdenTrabajo, $cTipoT, $cEmpleado)
     {
         $conectar = parent::conexion();
@@ -45,7 +45,7 @@ class Trabajo extends Conectar
     public function update_trabajo($cTrabajo, $nombreTrabajo, $descripcionTrabajo, $fechaEstimadaT, $fechaRealT, $estadoT, $costoT, $horasT, $cOrdenTrabajo, $cTipoT, $cEmpleado)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE trabajo SET nombreTrabajo = ?, descripcionTrabajo = ?, fechaEstimadaT = ?, fechaRealT = ?, estadoT = ?, costoT = ?, horasT = ?, cOrdenTrabajo = ? cTipoT = ?, cEmpleado = ? WHERE cTrabajo = ?";
+        $sql = "UPDATE trabajo SET nombreTrabajo = ?, descripcionTrabajo = ?, fechaEstimadaT = ?, fechaRealT = ?, estadoT = ?, costoT = ?, horasT = ?, cOrdenTrabajo = ?, cTipoT = ?, cEmpleado = ? WHERE cTrabajo = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreTrabajo);
         $sql->bindValue(2, $descripcionTrabajo);
@@ -57,12 +57,12 @@ class Trabajo extends Conectar
         $sql->bindValue(8, $cOrdenTrabajo);
         $sql->bindValue(9, $cTipoT);
         $sql->bindValue(10, $cEmpleado);
-
+        $sql->bindValue(11, $cTrabajo);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-  
+
+
     public function delete_trabajo($cTrabajo)
     {
         $conectar = parent::conexion();
@@ -72,6 +72,4 @@ class Trabajo extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-
-   
 }
