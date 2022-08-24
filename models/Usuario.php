@@ -2,42 +2,47 @@
 
 class Usuario extends Conectar
 {
-    public function get_usuarios()
+    public function get_usuarios($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario WHERE estadoU = 1 AND cTaller = ?";
         $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function get_usuario($id)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM usuarios WHERE id = ?";
+        $sql = "SELECT * FROM usuario WHERE cUsuario = ? ";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $id);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    /* crear usuario recive email clave*/
-    public function crear_usuario($email, $clave)
+    public function add_usuario($email,$clave,$cRolU,$cTaller,$nombreU)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO usuario (email, clave) VALUES (?, MD5(?))";
-        $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $email);
-        $sql->bindValue(2, $clave);
+        $sql = "INSERT INTO usuario VALUES(null,?,?,MD5(?),?,?,1) ";
+        $sql = $conectar->prepare($sql); 
+        $sql->bindValue(1, $nombreU);
+        $sql->bindValue(2, $email);
+        $sql->bindValue(3, $clave);
+        $sql->bindValue(4, $cRolU);
+        $sql->bindValue(5, $cTaller);
         $sql->execute();
     }
-
-    public function update_usuario($id, $nombre, $email)
+    public function update_usuario($nombreU,$email, $clave, $cRolU,$cUsuario)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?";
+        $sql = "UPDATE usuario SET nombreU = ?, email = ?, clave = MD5(?), cRolU = ? WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $nombre);
+        $sql->bindValue(1, $nombreU);
         $sql->bindValue(2, $email);
-        $sql->bindValue(3, $id);
+        $sql->bindValue(3, $clave);
+        $sql->bindValue(4, $cRolU);
+        $sql->bindValue(5, $cUsuario);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -45,7 +50,7 @@ class Usuario extends Conectar
     public function cambiar_clave($cUsuario, $clave)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuarios SET clave = MD5(?) WHERE cUsuario = ?";
+        $sql = "UPDATE usuario SET estadoU = 0 WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $clave);
         $sql->bindValue(2, $cUsuario);
@@ -56,7 +61,7 @@ class Usuario extends Conectar
     public function delete_usuario($cUsuario)
     {
         $conectar = parent::conexion();
-        $sql = "DELETE FROM usuarios WHERE cUsuario = ?";
+        $sql = "UPDATE usuario SET estadoU = 0 WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cUsuario);
         $sql->execute();
