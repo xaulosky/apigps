@@ -36,7 +36,7 @@ class Usuario extends Conectar
     public function update_usuario($nombreU,$email, $clave, $cRolU,$cUsuario)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuario SET nombreU = ?, email = ?, clave = ?, cRolU = ? WHERE cUsuario = ?";
+        $sql = "UPDATE usuario SET nombreU = ?, email = ?, clave = MD5(?), cRolU = ? WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreU);
         $sql->bindValue(2, $email);
