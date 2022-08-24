@@ -24,7 +24,7 @@ switch ($method) {
         echo json_encode(array('msg' => 'Agregado Correctamente'));
         break;
     case 'PUT':
-        $empleado->crear_empleado($body['rutEmpleado'], $body['nombreEmpleado'], $body['apellidoEmpleado'], $body['emailEmpleado'], $body['numeroTelefonoEmpleado'], $body['cRolE'], $body['cTaller']);
+        $empleado->crear_empleado($body['cEmpleado'],$body['rutEmpleado'], $body['nombreEmpleado'], $body['apellidoEmpleado'], $body['emailEmpleado'], $body['numeroTelefonoEmpleado'], $body['cRolE'], $body['cTaller']);
         break;
         case 'DELETE':
             $empleado->delete_empleado($_GET['cEmpleado']);
