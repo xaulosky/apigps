@@ -13,13 +13,14 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        echo json_encode($estado->getEstadosPV());
+        echo json_encode($estado->getEstadosPV($_GET["cFicha"]));
         break;
     case 'POST':
         /* valida que todos los datos sean enviados de lo contrario envia un mensaje de que faltan datos */
+        $ficha = $_GET['ultima'];
         if (count($body) > 0) {
             foreach ($body as $item) {
-                $estado->addEstadoPV($item['cFicha'], $item['cParteV'],  $item['estado']);
+                $estado->addEstadoPV($ficha, $item['cParteV'],  $item['estado']);
             }
         }
         break;

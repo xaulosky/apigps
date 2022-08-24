@@ -2,12 +2,13 @@
 /* cTALLER ARREGLAR PARA OTROS TALLERES. */
 class EstadoPV extends Conectar
 {
-    public function getEstadosPV()
+    public function getEstadosPV($cFicha)
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "select * from estadoPV";
+        $sql = "select e.cFicha, e.estado, p.cParteV, p.nombrePV from estadoPV e, partesVehiculo p WHERE cFicha = :cFicha AND p.cParteV = e.cParteV";
         $sql = $conectar->prepare($sql);
+        $sql->bindValue(":cFicha", $cFicha);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -11,10 +11,11 @@ class Ficha extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function get_ficha_by_id($cTaller, $cFicha)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT f.cFicha, f.fechaIngresoFicha, f.fichaObservacion, f.fechaEntregaEstimada, f.fechaEntrega, v.patenteV, c.nombreC, c.apellidoC FROM ficha f, cliente c, vehiculo v, usuario u WHERE f.cTaller = c.cTaller AND f.cUsuario = u.cUsuario AND v.cVehiculo = f.cVehiculo AND c.cCliente = v.cCliente AND f.cTaller = :cTaller AND f.fichaBorrada = 0 AND f.cFicha = :cFicha";
+        $sql = "SELECT f.cFicha, f.fechaIngresoFicha, f.fichaObservacion, f.fechaEntregaEstimada, f.fechaEntrega, v.patenteV, c.nombreC, c.apellidoC, v.cVehiculo FROM ficha f, cliente c, vehiculo v, usuario u WHERE f.cTaller = c.cTaller AND f.cUsuario = u.cUsuario AND v.cVehiculo = f.cVehiculo AND c.cCliente = v.cCliente AND f.cTaller = :cTaller AND f.fichaBorrada = 0 AND f.cFicha = :cFicha";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(":cTaller", $cTaller);
         $sql->bindValue(":cFicha", $cFicha);
@@ -50,5 +51,22 @@ class Ficha extends Conectar
         $sql->execute();
 
         echo json_encode(array("msg" => "Eliminado correctamente"));
+    }
+    public function getVehiculos($cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT v.cVehiculo, v.patenteV, v.modeloV, v.colorV, v.estadoV, c.cCliente, c.rutC, c.nombreC FROM vehiculo v, cliente c WHERE v.cCliente = c.cCliente AND c.cTaller = :cTaller";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(":cTaller", $cTaller);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getUltima($cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "SELECT * FROM ficha ORDER BY cFicha DESC LIMIT 1";
+        $sql = $conectar->prepare($sql);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -15,6 +15,10 @@ switch ($method) {
     case 'GET':
         if (isset($_GET["cTaller"]) && isset($_GET["cFicha"])) {
             echo json_encode($ficha->get_ficha_by_id($_GET["cTaller"], $_GET["cFicha"]));
+        } else if (isset($_GET["cTaller"]) && isset($_GET["Vehiculos"])) {
+            echo json_encode($ficha->getVehiculos($_GET["cTaller"]));
+        } else if (isset($_GET["cTaller"]) && isset($_GET["Ultima"])) {
+            echo json_encode($ficha->getUltima($_GET["cTaller"]));
         } else {
             echo json_encode($ficha->get_fichas($_GET["cTaller"]));
         }
