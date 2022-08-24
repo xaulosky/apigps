@@ -39,7 +39,7 @@ class Empleado extends Conectar
     }
 
 
-    public function update_empleado($cEmpleado, $rutEmpleado, $nombreEmpleado, $apellidoEmpleado, $emailEmpleado, $numeroTelefonoEmpleado, $cRolE, $cTaller)
+    public function update_empleado($rutEmpleado, $nombreEmpleado, $apellidoEmpleado, $emailEmpleado, $numeroTelefonoEmpleado, $cRolE, $cTaller, $cEmpleado)
     {
         $conectar = parent::conexion();
         $sql = "UPDATE empleado SET rutEmpleado = ?, nombreEmpleado = ?, apellidoEmpleado = ?, emailEmpleado = ?, numeroTelefonoEmpleado = ?, cRolE = ?, cTaller = ? WHERE cEmpleado = ?";
@@ -52,7 +52,6 @@ class Empleado extends Conectar
         $sql->bindValue(6, $cRolE);
         $sql->bindValue(7, $cTaller);
         $sql->bindValue(8, $cEmpleado);
-
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
