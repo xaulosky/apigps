@@ -18,27 +18,25 @@ content-type: application/json
 }
 
 ### 
-GET http://localhost/apigps/apigps/api/trabajo.php
+GET http://localhost/apigps/apigps/api/empleado.php
 
 ###
 
 GET http://localhost/apigps/apigps/api/trabajo.php?cTrabajo=1
 
 ###
-POST http://localhost/apigps/apigps/api/trabajo.php
+POST http://localhost/apigps/apigps/api/empleado.php
 content-type: application/json
 
 {
-    "nombreTrabajo": "aaa",
-    "descripcionTrabajo": "asdasd",
-    "fechaEstimadaT": "2022-06-01",
-    "fechaRealT": "2022-05-12",
-    "costoT": 20000,
-    "horasT": 40,
-    "cOrdenTrabajo": 1,
-    "cTipoT": 1,
-    "cEmpleado": 1,
-    "cTipoE": 1
+    "cEmpleado": 4,
+    "rutEmpleado": "20.066.223-1",
+    "nombreEmpleado": "",
+    "apellidoEmpleado": "asd",
+    "emailEmpleado": "aaa@gmail.com",
+    "numeroTelefonoEmpleado": "123123123",
+    "cRolE": 1,
+    "cTaller": 1
 
 
 }
