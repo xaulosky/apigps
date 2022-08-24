@@ -52,7 +52,7 @@ class Usuario extends Conectar
         $sql = "UPDATE usuario SET clave = MD5(?) WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $clave);
-        $sql->bindValue(4, $cUsuario);
+        $sql->bindValue(2, $cUsuario);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
