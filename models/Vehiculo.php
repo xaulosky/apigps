@@ -123,7 +123,7 @@ class Vehiculo extends Conectar
     public function get_Cliente($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo v, cliente c, taller t WHERE c.cCliente = ? AND v.cCliente=c.cCliente AND v.cTaller=t.cTaller";
+        $sql = "SELECT * FROM vehiculo v, cliente c, taller t WHERE c.cTaller = ? AND v.cCliente=c.cCliente AND v.cTaller=t.cTaller";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cTaller);
         $sql->execute();
