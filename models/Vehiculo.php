@@ -2,11 +2,12 @@
 
 class Vehiculo extends Conectar
 {
-    public function get_vehiculos()
+    public function get_vehiculos($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo ORDER BY cVehiculo DESC";
+        $sql = "SELECT * FROM vehiculo v, tipoCarroceria tc, taller t, cliente c WHERE t.cTaller=? AND v.cTipoCarroceria = tc.cTipoCarroceria AND v.cTaller = t.cTaller AND v.cCliente = c.cCliente";
         $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -14,7 +15,7 @@ class Vehiculo extends Conectar
     public function get_vehiculo($cVehiculo)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE cVehiculo = ?";
+        $sql = "SELECT * FROM vehiculo  WHERE cVehiculo = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, limpiaInput($cVehiculo));
         $sql->execute();
@@ -35,7 +36,7 @@ class Vehiculo extends Conectar
     public function get_vehiculo_por_modelo($modeloV)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE modeloV = ?";
+        $sql = "SELECT * FROM vehiculov WHERE modeloV = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $modeloV);
         $sql->execute();
@@ -112,18 +113,29 @@ class Vehiculo extends Conectar
     public function get_vehiculo_por_cCliente($cCliente)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM vehiculo WHERE cCliente = ?";
+        $sql = "SELECT * FROM vehiculo WHERE cCliente = ? AND estadoC=0";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cCliente);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //función para añadir vehiculos a la BDD
-    public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora,$cCliente, $cAseguradora, $cTipoCarroceria)
+    //función para obtener un vehiculo por su id de taller
+    public function get_vehiculo_por_cTaller($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, cTipoCarroceria, cCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "SELECT * FROM vehiculo WHERE cTaller = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
+        $sql->execute();
+        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //función para añadir vehiculos a la BDD
+    public function añadir_vehiculo($patenteV, $modeloV, $colorV, $estadoV, $estadoRevisionTecnicaV, $montoAsegurdora, $cCliente, $cAseguradora, $cTipoCarroceria, $cTaller)
+    {
+        $conectar = parent::conexion();
+        $sql = "INSERT INTO vehiculo (patenteV, modeloV, colorV, estadoV, estadoRevisionTecnicaV, montoAseguradora, cAseguradora, cTipoCarroceria, cCliente, cTaller) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $patenteV);
         $sql->bindValue(2, $modeloV);
@@ -134,6 +146,7 @@ class Vehiculo extends Conectar
         $sql->bindValue(7, $cAseguradora);
         $sql->bindValue(8, $cTipoCarroceria);
         $sql->bindValue(9, $cCliente);
+        $sql->bindValue(10, $cTaller);
         $sql->execute();
     }
 
