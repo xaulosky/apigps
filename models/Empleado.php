@@ -21,7 +21,7 @@ class Empleado extends Conectar
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-   
+
     public function crear_empleado($rutEmpleado, $nombreEmpleado, $apellidoEmpleado, $emailEmpleado, $numeroTelefonoEmpleado, $cRolE, $cTaller)
     {
         $conectar = parent::conexion();
@@ -55,8 +55,8 @@ class Empleado extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-  
+
+
     public function delete_empleado($cEmpleado)
     {
         $conectar = parent::conexion();
@@ -66,6 +66,4 @@ class Empleado extends Conectar
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-
-   
 }
