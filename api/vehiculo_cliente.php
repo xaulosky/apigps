@@ -19,4 +19,4 @@ switch ($method) {
             echo json_encode($vehiculo->get_cliente($_GET['cTaller']));
         }
         break;
-    }
+}
