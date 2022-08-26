@@ -33,24 +33,23 @@ class Usuario extends Conectar
         $sql->bindValue(5, $cTaller);
         $sql->execute();
     }
-    public function update_usuario($nombreU,$email, $clave, $cRolU,$cUsuario)
+    public function update_usuario($nombreU,$email, $cRolU,$cUsuario)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuario SET nombreU = ?, email = ?, clave = MD5(?), cRolU = ? WHERE cUsuario = ?";
+        $sql = "UPDATE usuario SET nombreU = ?, email = ?, cRolU = ? WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $nombreU);
         $sql->bindValue(2, $email);
-        $sql->bindValue(3, $clave);
-        $sql->bindValue(4, $cRolU);
-        $sql->bindValue(5, $cUsuario);
+        $sql->bindValue(3, $cRolU);
+        $sql->bindValue(4, $cUsuario);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
     /* cambiar clave */
-    public function cambiar_clave($cUsuario, $clave)
+    public function update_clave($cUsuario, $clave)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE usuario SET estadoU = 0 WHERE cUsuario = ?";
+        $sql = "UPDATE usuario SET clave = MD5(?) WHERE cUsuario = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $clave);
         $sql->bindValue(2, $cUsuario);
