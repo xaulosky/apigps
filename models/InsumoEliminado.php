@@ -3,19 +3,23 @@
 
 class InsumoEliminado extends Conectar
 {
-    public function get_insumoEliminado()
+    public function get_insumo_eliminado($cTaller)
     {
         $conectar = parent::conexion();
-        $sql = "SELECT * FROM insumoEliminado ORDER BY fechaInsumoEliminado DESC";
+        $sql = "SELECT * FROM insumo WHERE cTaller = ? AND estadoI = 0";
         $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cTaller);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function restaurarInsumo($idInsumoEliminado)
+
+
+    public function restaurar_eliminado_insumo($cInsumo)
     {
         $conectar = parent::conexion();
-        $sql = "UPDATE insumoEliminado SET estadoInsumoEliminado = '1' WHERE idInsumoEliminado = '$idInsumoEliminado'";
+        $sql = "UPDATE insumo SET estadoI = 1 WHERE cInsumo = ?";
         $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cInsumo);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }

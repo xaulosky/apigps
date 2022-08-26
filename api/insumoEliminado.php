@@ -14,11 +14,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        echo json_encode($insumoEliminado->get_insumoEliminado());
+        echo json_encode($insumoEliminado->get_insumo_eliminado($_GET['cTaller']));
         break;
     case 'PUT':
-        if (isset($body['idInsumoEliminado'])) {
-            $insumoEliminado->restaurarInsumo($body['idInsumoEliminado']);
+        if (isset($body['cInsumo'])) {
+            $insumoEliminado->restaurar_eliminado_insumo($body['cInsumo']);
         }
         break;
 }
